@@ -19,7 +19,7 @@ public class service {
 
     private RestTemplate restTemplateConfig;
 
-    @Retry(name = "basic",fallbackMethod = "getUserByIDFallBack")
+//    @Retry(name = "basic",fallbackMethod = "getUserByIDFallBack")
 //    @RateLimiter(name = "basic")
     @RateLimiter(name = "timeoutExample")
     public VO getById( Long id){
