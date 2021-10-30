@@ -1,5 +1,6 @@
 package com.userservice.service;
 
+import com.userservice.authen.UserPrincipal;
 import com.userservice.entity.Order;
 import com.userservice.entity.User;
 import com.userservice.entity.VO;
@@ -36,5 +37,19 @@ public class service {
         VO vo= new VO();
         vo.setUser(user);
         return vo;
+    }
+
+
+    public UserPrincipal findByUsername(String username) {
+        User user = repository.findByUserName(username);
+        UserPrincipal userPrincipal = new UserPrincipal();
+
+        if (null != user) {
+            userPrincipal.setUserId(user.getId());
+            userPrincipal.setUsername(user.getUserName());
+            userPrincipal.setPassword(user.getPassword());
+        }
+
+        return userPrincipal;
     }
 }
